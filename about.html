@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="kiln">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,47 +8,85 @@
 <meta property="og:title" content="About | Boboarts">
 <meta property="og:description" content="The sculptor behind Boboarts: a hand-built practice in clay covering relief portraits, figures, animals and heritage masks.">
 <meta property="og:image" content="/assets/works/boy-relief.webp">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23b87a50'/></svg>">
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#e8ded1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%239b5732'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;500;700&family=Inter:wght@400;500&family=Taviraj:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<script src="js/works.js"></script>
-<script src="js/main.js"></script>
+<script src="js/works.js" defer></script>
+<script src="js/main.js" defer></script>
 </head>
-<body data-page="about" class="page">
+<body data-page="about">
 <header class="site-header">
-  <a class="brand" href="index.html"><b>Boboarts</b><span>Clay sculptor</span></a>
-  <div class="clock"><div>Commissions open</div><span>Your time</span><b data-clock></b></div>
-  <nav class="nav"><a href="works.html">Work</a><a href="about.html" aria-current="page">About</a><a href="commission.html">Commission</a><a href="contact.html">Contact</a></nav>
-  <div class="socials">
-    <a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
-    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-    <a href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+  <a class="logo" href="index.html">Bobo<i>arts</i></a>
+  <div class="header-actions">
+    <a class="pill" href="contact.html">Contact <span class="arr">↗</span></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button>
   </div>
-  <button class="menu-btn" aria-expanded="false">Menu</button>
 </header>
-<main class="about">
-  <p class="lede reveal">I'm the hands behind Boboarts. I set out to show a new sculpture every day until the work spoke for itself, and these days it's me, a turntable, a block of clay and a reference photo.</p>
-  <div class="photo reveal"><img src="assets/works/artist.jpg" alt="The artist holding a clay heritage mask in the studio"></div>
-  <div class="text reveal">
-    <dl class="rows">
-      <dt>Practice</dt>
-      <dd>Every piece starts with a reference, whether a photograph, a person or an animal. It is built up, carved and refined by hand, with no moulds and no casts.</dd>
-      <dt>Subjects</dt>
-      <dd>Relief portraits<br>Figurative panels<br>Animal studies<br>Heritage masks</dd>
-      <dt>Influences</dt>
-      <dd>Classical relief carving<br>Benin and West African court art<br>The human face and body</dd>
-      <dt>Process</dt>
-      <dd>Reference <span>01</span><br>Block-in <span>02</span><br>Detail <span>03</span><br>Finish <span>04</span></dd>
-      <dt>Social</dt>
-      <dd><a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">TikTok</a><br><a href="#">Instagram</a><br><a href="https://wa.me/0000000000">WhatsApp</a></dd>
-    </dl>
+<nav class="menu" aria-label="Main"><a href="index.html">Home</a><a href="about.html" aria-current="page">About</a><a href="gallery.html">Gallery</a><a href="commission.html">Commission</a><a href="contact.html">Contact</a></nav>
+<main>
+  <div class="wrap">
+    <div class="page-head">
+      <div><h1 class="h-xl">My <span class="it">story</span></h1><p class="lead">A daily habit of sculpting has become a growing body of work in clay.</p></div>
+      <div style="text-align:right"><div class="h-md">Est. in clay</div><span class="it-sm">Relief · figures · heritage</span></div>
+    </div>
+    <div class="img-row reveal">
+      <img src="assets/works/the-labourer.webp" alt="The Labourer, figurative relief" style="object-position:center 60%">
+      <img src="assets/works/artist.jpg" alt="The artist in the studio with a heritage mask">
+      <img src="assets/works/cornrows-sm.webp" alt="Cornrows, relief portrait">
+    </div>
   </div>
+
+  <section class="wrap center reveal">
+    <h2 class="h-lg">How it <span class="it">began</span></h2>
+    <p class="lead">It started with a promise: show a new piece every day until the work spoke for itself.</p>
+  </section>
+
+  <section class="band" style="padding-bottom:0">
+    <div class="two-col">
+      <div class="reveal"><div class="k"><i>01</i> Mission</div><p>To turn the faces, figures and creatures people love into something solid and lasting, carved by hand from raw clay, with nothing cast and nothing mass-produced.</p></div>
+      <div class="reveal"><div class="k"><i>02</i> Approach</div><p>Classical relief carving meets West African heritage art. Every piece starts with a reference and is pushed, carved and refined until it looks back at you.</p></div>
+    </div>
+  </section>
+
+  <section class="wrap center">
+    <div class="reveal"><h2 class="h-lg">Numbers that <span class="it">tell a story</span></h2><p class="lead">A small studio with a simple rule: everything by hand.</p></div>
+    <div class="stats reveal">
+      <div><b>100%</b><span>Hand-built, no casts</span></div>
+      <div><b>4</b><span>Ways of working</span></div>
+      <div><b>~1 wk</b><span>For a detailed piece</span></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="head-row reveal">
+      <div><h2 class="h-lg">Inside the <span class="it">studio</span></h2><p class="lead">Short clips of recent pieces, from reference photo to finished clay.</p></div>
+      <a class="pill" href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">Watch on TikTok <span class="arr">↗</span></a>
+    </div>
+    <div class="vids">
+      <figure class="reveal"><video src="assets/video/tortoise.mp4" poster="assets/video/tortoise.jpg" muted loop playsinline preload="none" data-autoplay></video><figcaption>Tortoise <i>— one week</i></figcaption></figure>
+      <figure class="reveal"><video src="assets/video/mask.mp4" poster="assets/video/mask.jpg" muted loop playsinline preload="none" data-autoplay></video><figcaption>Heritage mask <i>— in progress</i></figcaption></figure>
+      <figure class="reveal"><video src="assets/video/tiger.mp4" poster="assets/video/tiger.jpg" muted loop playsinline preload="none" data-autoplay></video><figcaption>Tiger <i>— in the round</i></figcaption></figure>
+    </div>
+  </section>
 </main>
+<section class="cta">
+  <h2 class="h-lg">Ready to <span class="it">commission?</span></h2>
+  <p class="lead">Send a photo and an idea, and I'll shape it into something you can keep for a lifetime.</p>
+  <a class="pill" href="contact.html">Start a commission <span class="arr">↗</span></a>
+  <div class="strip" aria-hidden="true"><div class="strip-track"></div></div>
+</section>
 <footer class="site-footer">
-  <span>© <span data-year></span> Boboarts. All rights reserved.</span>
-  <span>Hand-sculpted in clay</span>
-  <a class="r" href="contact.html">Start a commission</a>
+  <div class="foot-top">
+    <p>Hand-sculpted relief portraits, figures, animals and heritage pieces, each one shaped from raw clay.</p>
+    <div><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+    <div><h4>Work with me</h4><ul><li><a href="commission.html">Commission</a></li><li><a href="contact.html">Contact</a></li><li><a href="mailto:hello@boboarts.com">Email</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">TikTok</a></li><li><a href="#">Instagram</a></li><li><a href="https://wa.me/0000000000">WhatsApp</a></li></ul></div>
+  </div>
+  <div class="wordmark" aria-hidden="true">Bobo<i>arts</i></div>
+  <div class="foot-bottom"><span>© <span data-year></span> Boboarts. All rights reserved.</span><span>Shaped by hand</span></div>
 </footer>
 </body>
 </html>

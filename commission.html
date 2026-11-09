@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="kiln">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,79 +8,75 @@
 <meta property="og:title" content="Commission | Boboarts">
 <meta property="og:description" content="Commission a hand-sculpted clay piece from Boboarts: relief portraits, figurative panels, pets and animals, heritage masks and custom work.">
 <meta property="og:image" content="/assets/works/boy-relief.webp">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23b87a50'/></svg>">
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#e8ded1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%239b5732'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;500;700&family=Inter:wght@400;500&family=Taviraj:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<script src="js/works.js"></script>
-<script src="js/main.js"></script>
+<script src="js/works.js" defer></script>
+<script src="js/main.js" defer></script>
 </head>
-<body data-page="commission" class="page">
+<body data-page="commission">
 <header class="site-header">
-  <a class="brand" href="index.html"><b>Boboarts</b><span>Clay sculptor</span></a>
-  <div class="clock"><div>Commissions open</div><span>Your time</span><b data-clock></b></div>
-  <nav class="nav"><a href="works.html">Work</a><a href="about.html">About</a><a href="commission.html" aria-current="page">Commission</a><a href="contact.html">Contact</a></nav>
-  <div class="socials">
-    <a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
-    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-    <a href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+  <a class="logo" href="index.html">Bobo<i>arts</i></a>
+  <div class="header-actions">
+    <a class="pill" href="contact.html">Contact <span class="arr">↗</span></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button>
   </div>
-  <button class="menu-btn" aria-expanded="false">Menu</button>
 </header>
+<nav class="menu" aria-label="Main"><a href="index.html">Home</a><a href="about.html">About</a><a href="gallery.html">Gallery</a><a href="commission.html" aria-current="page">Commission</a><a href="contact.html">Contact</a></nav>
 <main>
-  <h1 class="mega pad">Things I<br>can make <span class="accent">for you</span></h1>
-  <div class="offer-grid">
-    <div class="offer reveal">
-      <a href="contact.html?commission=Relief portrait"><div class="frame"><img src="assets/works/boy-relief-sm.webp" alt="Relief portrait example" loading="lazy"></div></a>
-      <div class="row"><b>Relief portrait</b><span class="muted">Price on request</span></div>
-      <p>A personal portrait carved in relief from your photo, for a loved one, a memorial or a milestone.</p>
-      <a class="req" href="contact.html?commission=Relief portrait">Request this →</a>
+  <div class="wrap">
+    <div class="page-head">
+      <div><h1 class="h-xl">Made for <span class="it">you</span></h1><p class="lead">Choose a type of commission. Every piece is made to order from your references.</p></div>
+      <a class="pill solid" href="contact.html">Start an enquiry <span class="arr">↗</span></a>
     </div>
-    <div class="offer reveal">
-      <a href="contact.html?commission=Figurative relief"><div class="frame"><img src="assets/works/the-labourer-sm.webp" alt="Figurative panel example" loading="lazy"></div></a>
-      <div class="row"><b>Figurative panel</b><span class="muted">Price on request</span></div>
-      <p>A full-figure scene in relief inspired by classical carving, built around your theme or story.</p>
-      <a class="req" href="contact.html?commission=Figurative relief">Request this →</a>
-    </div>
-    <div class="offer reveal">
-      <a href="contact.html?commission=Animal study"><div class="frame"><img src="assets/works/seated-cat-sm.webp" alt="Pet &amp; animal example" loading="lazy"></div></a>
-      <div class="row"><b>Pet &amp; animal</b><span class="muted">Price on request</span></div>
-      <p>Your pet, or any animal, sculpted in the round with real character and texture.</p>
-      <a class="req" href="contact.html?commission=Animal study">Request this →</a>
-    </div>
-    <div class="offer reveal">
-      <a href="contact.html?commission=Heritage"><div class="frame"><img src="assets/works/heritage-mask-sm.webp" alt="Heritage mask example" loading="lazy"></div></a>
-      <div class="row"><b>Heritage mask</b><span class="muted">Price on request</span></div>
-      <p>Masks and pieces inspired by heritage art, made as statement wall pieces or gifts.</p>
-      <a class="req" href="contact.html?commission=Heritage">Request this →</a>
-    </div>
-    <div class="offer reveal">
-      <a href="contact.html?commission=Face study"><div class="frame"><img src="assets/works/the-elder-sm.webp" alt="Face study example" loading="lazy"></div></a>
-      <div class="row"><b>Face study</b><span class="muted">Price on request</span></div>
-      <p>A deeper, more sculptural face in high relief that captures expression up close.</p>
-      <a class="req" href="contact.html?commission=Face study">Request this →</a>
-    </div>
-    <div class="offer reveal">
-      <a href="contact.html?commission=Custom"><div class="frame"><img src="assets/works/cornrows-sm.webp" alt="Open brief example" loading="lazy"></div></a>
-      <div class="row"><b>Open brief</b><span class="muted">Let's talk</span></div>
-      <p>Have an idea that doesn't fit a box? Describe it and we'll shape it together.</p>
-      <a class="req" href="contact.html?commission=Custom">Request this →</a>
+    <div class="grid-3" style="margin-top:56px;row-gap:48px">
+      <a class="card reveal" href="contact.html?commission=Relief portrait"><div class="ph"><img src="assets/works/boy-relief-sm.webp" alt="Relief portrait example" loading="lazy"></div><h3>Relief portrait <span class="it" style="color:var(--muted);font-size:13px">— price on request</span></h3><span class="it-sm">From your photo, for the wall</span></a>
+      <a class="card reveal" href="contact.html?commission=Figurative relief"><div class="ph"><img src="assets/works/the-labourer-sm.webp" alt="Figurative panel example" loading="lazy"></div><h3>Figurative panel <span class="it" style="color:var(--muted);font-size:13px">— price on request</span></h3><span class="it-sm">A classical scene around your story</span></a>
+      <a class="card reveal" href="contact.html?commission=Animal study"><div class="ph"><img src="assets/works/seated-cat-sm.webp" alt="Pet &amp; animal example" loading="lazy"></div><h3>Pet &amp; animal <span class="it" style="color:var(--muted);font-size:13px">— price on request</span></h3><span class="it-sm">Sculpted in the round</span></a>
+      <a class="card reveal" href="contact.html?commission=Heritage"><div class="ph"><img src="assets/works/heritage-mask-sm.webp" alt="Heritage mask example" loading="lazy"></div><h3>Heritage mask <span class="it" style="color:var(--muted);font-size:13px">— price on request</span></h3><span class="it-sm">A statement wall piece or gift</span></a>
+      <a class="card reveal" href="contact.html?commission=Face study"><div class="ph"><img src="assets/works/the-elder-sm.webp" alt="Face study example" loading="lazy"></div><h3>Face study <span class="it" style="color:var(--muted);font-size:13px">— price on request</span></h3><span class="it-sm">High relief, up close</span></a>
+      <a class="card reveal" href="contact.html?commission=Custom"><div class="ph"><img src="assets/works/profile-study-sm.webp" alt="Open brief example" loading="lazy"></div><h3>Open brief <span class="it" style="color:var(--muted);font-size:13px">— let's talk</span></h3><span class="it-sm">Any subject, any size</span></a>
     </div>
   </div>
-  <section class="how">
-    <h2>How it works</h2>
-    <dl class="rows">
-      <dt class="muted">01</dt><dd>Enquire</dd><dd class="d muted">Send your idea, reference photos and preferred size through the contact form.</dd>
-      <dt class="muted">02</dt><dd>Quote</dd><dd class="d muted">You get a price and timeline. A deposit secures your place in the queue.</dd>
-      <dt class="muted">03</dt><dd>Sculpt</dd><dd class="d muted">Progress photos and videos as your piece takes shape in the studio. A detailed piece takes around a week.</dd>
-      <dt class="muted">04</dt><dd>Deliver</dd><dd class="d muted">Your finished piece is carefully packed for collection or delivery. The balance is due before it ships.</dd>
-    </dl>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="head-row reveal"><div><h2 class="h-lg">How it <span class="it">works</span></h2><p class="lead">From your first message to the finished piece at your door.</p></div></div>
+      <div class="rows reveal">
+        <div class="row"><div><div class="when">Step 01</div><h3>Enquire</h3></div><p>Send your idea, reference photos and preferred size through the contact form.</p><span></span></div>
+        <div class="row"><div><div class="when">Step 02</div><h3>Quote</h3></div><p>You get a price and timeline. A deposit secures your place in the queue.</p><span></span></div>
+        <div class="row"><div><div class="when">Step 03</div><h3>Sculpt</h3></div><p>You receive progress photos and videos as your piece takes shape in the studio.</p><span></span></div>
+        <div class="row"><div><div class="when">Step 04</div><h3>Deliver</h3></div><p>The finished piece is carefully packed for collection or delivery. The balance is due before it ships.</p><span></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap faq">
+    <div class="head-row reveal"><h2 class="h-lg">Good to <span class="it">know</span></h2></div>
+    <details><summary>How long does a commission take?</summary><p>It depends on size and detail. A detailed piece takes around a week of sculpting, and you'll get a timeline with your quote.</p></details>
+    <details><summary>What do I need to send?</summary><p>Clear, well-lit photos of the subject from a few angles, plus notes on pose, size and where the piece will be displayed.</p></details>
+    <details><summary>Do you ship?</summary><p>Yes. Pieces are packed carefully, and delivery options are confirmed with your quote.</p></details>
+    <details><summary>How do I pay?</summary><p>A deposit confirms the commission and the balance is due before delivery. Payment details come with your quote.</p></details>
   </section>
 </main>
+<section class="cta">
+  <h2 class="h-lg">Ready to <span class="it">commission?</span></h2>
+  <p class="lead">Send a photo and an idea, and I'll shape it into something you can keep for a lifetime.</p>
+  <a class="pill" href="contact.html">Start a commission <span class="arr">↗</span></a>
+  <div class="strip" aria-hidden="true"><div class="strip-track"></div></div>
+</section>
 <footer class="site-footer">
-  <span>© <span data-year></span> Boboarts. All rights reserved.</span>
-  <span>Hand-sculpted in clay</span>
-  <a class="r" href="contact.html">Start a commission</a>
+  <div class="foot-top">
+    <p>Hand-sculpted relief portraits, figures, animals and heritage pieces, each one shaped from raw clay.</p>
+    <div><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+    <div><h4>Work with me</h4><ul><li><a href="commission.html">Commission</a></li><li><a href="contact.html">Contact</a></li><li><a href="mailto:hello@boboarts.com">Email</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">TikTok</a></li><li><a href="#">Instagram</a></li><li><a href="https://wa.me/0000000000">WhatsApp</a></li></ul></div>
+  </div>
+  <div class="wordmark" aria-hidden="true">Bobo<i>arts</i></div>
+  <div class="foot-bottom"><span>© <span data-year></span> Boboarts. All rights reserved.</span><span>Shaped by hand</span></div>
 </footer>
 </body>
 </html>

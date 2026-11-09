@@ -2,37 +2,28 @@
 
 Portfolio and commissions website for Boboarts, a clay sculpture studio.
 
-A plain static site with no build step: open `index.html` in a browser, or host on GitHub Pages, Netlify or Vercel.
+A plain static site with no build step: open `index.html` in a browser, or deploy to Vercel (`vercel.json` gives clean URLs such as `/about`).
+
+## Design
+The layout follows draxton.webflow.io: a split logo, a "Contact" pill and a round menu button that opens a full-screen menu, uppercase headings with italic serif accents, floating tilted artwork in the hero, and a giant wordmark in the footer.
+
+The palette is Sand: a light clay background, mild black type and a clay-brown accent, with an animated film-grain overlay. Colours live at the top of `css/style.css`. The grain is the `body::after` rule; lower its `opacity` to make it subtler.
 
 ## Pages
-Layout follows the reference site (theoportfolio.framer.photos): a fixed four-column header, a full-screen home carousel and minimal type.
-
-- `index.html`: counter preloader, then a tilted vertical carousel of works you browse by scrolling, dragging or using the arrow keys, with a sound toggle for the videos
-- `works.html`: large heading and a horizontal strip of every work (the mouse wheel scrolls it sideways)
-- `work.html?p=<slug>`: project page for one piece, with details, a commission button and a link to the next work
-- `about.html`: artist statement, photo, and practice, subjects, influences and process
-- `commission.html`: commission types with "Request this" links, and how it works
+- `index.html`: hero with floating works, a paragraph that lights up as you scroll, the studio's areas of work, an artwork slider, an artist feature, process steps, commission rows and an info strip
+- `gallery.html`: every work in a grid with filters (`gallery.html#animals` opens a filter)
+- `work.html?p=<slug>`: a page for one piece, with a commission button and a link to the next work
+- `about.html`: story, mission, numbers and studio videos
+- `commission.html`: commission types, how it works and FAQ
 - `contact.html`: contact details and an enquiry form (`?commission=<type>` preselects the type)
 
 ## Adding or editing works
-All works are listed in `js/works.js`. Add an entry there, with images in `assets/works/` (`name.webp` and `name-sm.webp`) or a clip in `assets/video/` (`name.mp4` and `name.jpg` poster), and it appears on the home, Work and project pages.
-
-## Colour options
-Four palettes live in `css/style.css` (`kiln`, `terracotta`, `earth`, `sand`). A floating switcher in the bottom-left corner previews them, and `?theme=earth` also works in the URL.
-
-Once one is chosen:
-1. Set `data-theme="<choice>"` on `<html>` in each page.
-2. Delete the theme switcher block at the top of `js/main.js` and the `.theme-switcher` CSS.
+All works are listed in `js/works.js`. Add an entry there, with images in `assets/works/` (`name.webp` and `name-sm.webp`) or a clip in `assets/video/` (`name.mp4` and `name.jpg` poster). It then appears in the gallery, the home slider, the footer image strip and its own work page.
 
 ## Placeholders to replace
-- Email `hello@boboarts.com` (contact page and the `data-email` on the form)
-- WhatsApp number `wa.me/0000000000`
+- Email `hello@boboarts.com` (pages and the form's `data-email`)
+- WhatsApp `wa.me/0000000000`
 - Instagram links (`href="#"`)
-- Prices, which are currently "Price on request"
-- Artist name and bio details on the About page
+- Prices, currently "Price on request"
 
-The enquiry form currently opens the visitor's email app. To receive submissions directly, add `action="https://formspree.io/f/<id>" method="POST"` to the form.
-
-## Media
-- `assets/works/`: optimised photos (`name.webp` full size, `name-sm.webp` thumbnail)
-- `assets/video/`: short muted process clips trimmed from the original videos
+The enquiry form opens the visitor's email app. To receive submissions directly, add `action="https://formspree.io/f/<id>" method="POST"` to the form in `contact.html`.

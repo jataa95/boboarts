@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="kiln">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,61 +8,64 @@
 <meta property="og:title" content="Contact | Boboarts">
 <meta property="og:description" content="Get in touch with Boboarts about commissions, available works and collaborations.">
 <meta property="og:image" content="/assets/works/boy-relief.webp">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23b87a50'/></svg>">
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
-<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#e8ded1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%239b5732'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;500;700&family=Inter:wght@400;500&family=Taviraj:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
-<script src="js/works.js"></script>
-<script src="js/main.js"></script>
+<script src="js/works.js" defer></script>
+<script src="js/main.js" defer></script>
 </head>
-<body data-page="contact" class="page">
+<body data-page="contact">
 <header class="site-header">
-  <a class="brand" href="index.html"><b>Boboarts</b><span>Clay sculptor</span></a>
-  <div class="clock"><div>Commissions open</div><span>Your time</span><b data-clock></b></div>
-  <nav class="nav"><a href="works.html">Work</a><a href="about.html">About</a><a href="commission.html">Commission</a><a href="contact.html" aria-current="page">Contact</a></nav>
-  <div class="socials">
-    <a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
-    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
-    <a href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
+  <a class="logo" href="index.html">Bobo<i>arts</i></a>
+  <div class="header-actions">
+    <a class="pill" href="contact.html">Contact <span class="arr">↗</span></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button>
   </div>
-  <button class="menu-btn" aria-expanded="false">Menu</button>
 </header>
-<main class="contact">
-  <div class="left reveal">
-    <img src="assets/works/cornrows-sm.webp" alt="Cornrows, a relief portrait in clay">
-    <p class="lede">Got a piece in mind? Write to me.<br>I read every message myself.</p>
-    <dl class="details">
-      <div><dt>WhatsApp</dt><dd><a href="https://wa.me/0000000000">+000 000 0000</a></dd></div>
-      <div><dt>Studio</dt><dd>City, Country</dd></div>
-      <div><dt>Elsewhere</dt><dd><a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">TikTok</a><br><a href="#">Instagram</a></dd></div>
-      <div><dt>Availability</dt><dd>Taking commissions</dd></div>
-      <div><dt>Shipping</dt><dd>Local and international</dd></div>
-    </dl>
-    <a class="big-mail" href="mailto:hello@boboarts.com">hello@boboarts.com</a>
+<nav class="menu" aria-label="Main"><a href="index.html">Home</a><a href="about.html">About</a><a href="gallery.html">Gallery</a><a href="commission.html">Commission</a><a href="contact.html" aria-current="page">Contact</a></nav>
+<main class="wrap" style="padding-bottom:120px">
+  <div class="page-head">
+    <div><h1 class="h-xl">Get in <span class="it">touch</span></h1><p class="lead">For commissions, available works or collaborations, send a message and I'll get back to you.</p></div>
   </div>
-  <form id="enquiry" class="reveal" data-email="hello@boboarts.com">
-    <label>Name<input name="name" required autocomplete="name" placeholder="Your name"></label>
-    <label>Email<input name="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
-    <label>Phone / WhatsApp<input name="phone" type="tel" autocomplete="tel" placeholder="Optional"></label>
-    <label>Commission
-      <select name="type">
-        <option>Relief portrait</option>
-        <option>Figurative relief</option>
-        <option>Animal study</option>
-        <option>Heritage</option>
-        <option>Face study</option>
-        <option>Custom</option>
-        <option>General enquiry</option>
-      </select>
-    </label>
-    <label>Your idea<textarea name="message" required placeholder="A few lines about the piece, size, timing and budget"></textarea></label>
-    <button class="btn" type="submit">Send message</button>
-  </form>
+  <div class="contact">
+    <div class="contact-info reveal">
+      <div><div class="caps muted">Email</div><a class="v" href="mailto:hello@boboarts.com">hello@boboarts.com</a></div>
+      <div><div class="caps muted">WhatsApp</div><a class="v" href="https://wa.me/0000000000">+000 000 0000</a></div>
+      <div><div class="caps muted">TikTok</div><a class="v" href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">@henzyyyyyy</a></div>
+      <div><div class="caps muted">Instagram</div><a class="v" href="#">@boboarts</a></div>
+      <img src="assets/works/heritage-mask-sm.webp" alt="Heritage mask in clay" style="width:180px;aspect-ratio:4/5;object-fit:cover">
+    </div>
+    <form id="enquiry" class="reveal" data-email="hello@boboarts.com">
+      <div class="f2">
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input name="email" type="email" required autocomplete="email"></label>
+      </div>
+      <div class="f2">
+        <label>Phone / WhatsApp<input name="phone" type="tel" autocomplete="tel"></label>
+        <label>Commission
+          <select name="type">
+            <option>Relief portrait</option><option>Figurative relief</option><option>Animal study</option><option>Heritage</option><option>Face study</option><option>Custom</option><option>General enquiry</option>
+          </select>
+        </label>
+      </div>
+      <label>Size &amp; budget<input name="budget" placeholder="e.g. 30 × 40 cm, flexible budget"></label>
+      <label>Your idea<textarea name="message" required placeholder="Tell me about the piece, who or what it's of, and when you need it."></textarea></label>
+      <button class="pill solid" type="submit">Send enquiry <span class="arr">↗</span></button>
+    </form>
+  </div>
 </main>
 <footer class="site-footer">
-  <span>© <span data-year></span> Boboarts. All rights reserved.</span>
-  <span>Hand-sculpted in clay</span>
-  <a class="r" href="contact.html">Start a commission</a>
+  <div class="foot-top">
+    <p>Hand-sculpted relief portraits, figures, animals and heritage pieces, each one shaped from raw clay.</p>
+    <div><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+    <div><h4>Work with me</h4><ul><li><a href="commission.html">Commission</a></li><li><a href="contact.html">Contact</a></li><li><a href="mailto:hello@boboarts.com">Email</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">TikTok</a></li><li><a href="#">Instagram</a></li><li><a href="https://wa.me/0000000000">WhatsApp</a></li></ul></div>
+  </div>
+  <div class="wordmark" aria-hidden="true">Bobo<i>arts</i></div>
+  <div class="foot-bottom"><span>© <span data-year></span> Boboarts. All rights reserved.</span><span>Shaped by hand</span></div>
 </footer>
 </body>
 </html>

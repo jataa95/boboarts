@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gallery | Boboarts</title>
+<meta name="description" content="Selected clay sculptures by Boboarts: relief portraits, figurative panels, animal studies and heritage masks.">
+<meta property="og:title" content="Gallery | Boboarts">
+<meta property="og:description" content="Selected clay sculptures by Boboarts: relief portraits, figurative panels, animal studies and heritage masks.">
+<meta property="og:image" content="/assets/works/boy-relief.webp">
+<meta name="theme-color" content="#e8ded1">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%239b5732'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@400;500;700&family=Inter:wght@400;500&family=Taviraj:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/works.js" defer></script>
+<script src="js/main.js" defer></script>
+</head>
+<body data-page="gallery">
+<header class="site-header">
+  <a class="logo" href="index.html">Bobo<i>arts</i></a>
+  <div class="header-actions">
+    <a class="pill" href="contact.html">Contact <span class="arr">↗</span></a>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+<nav class="menu" aria-label="Main"><a href="index.html">Home</a><a href="about.html">About</a><a href="gallery.html" aria-current="page">Gallery</a><a href="commission.html">Commission</a><a href="contact.html">Contact</a></nav>
+<main class="wrap">
+  <div class="page-head">
+    <div><h1 class="h-xl">Every piece<br>has a <span class="it">story</span></h1><p class="lead">Browse relief portraits, figurative panels, animal studies and heritage pieces, all shaped by hand.</p></div>
+    <div class="filters" role="group" aria-label="Filter works">
+      <button class="active" data-f="all">All</button><button data-f="portraits">Portraits</button><button data-f="figurative">Figurative</button><button data-f="animals">Animals</button><button data-f="heritage">Heritage</button>
+    </div>
+  </div>
+  <div class="gallery"></div>
+</main>
+<script>
+  // Open a filter from a link like gallery.html#animals
+  addEventListener("DOMContentLoaded", () => setTimeout(() => { const f = location.hash.slice(1); const b = document.querySelector(`.filters [data-f="${f}"]`); b && b.click(); }));
+</script>
+<section class="cta">
+  <h2 class="h-lg">Ready to <span class="it">commission?</span></h2>
+  <p class="lead">Send a photo and an idea, and I'll shape it into something you can keep for a lifetime.</p>
+  <a class="pill" href="contact.html">Start a commission <span class="arr">↗</span></a>
+  <div class="strip" aria-hidden="true"><div class="strip-track"></div></div>
+</section>
+<footer class="site-footer">
+  <div class="foot-top">
+    <p>Hand-sculpted relief portraits, figures, animals and heritage pieces, each one shaped from raw clay.</p>
+    <div><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="gallery.html">Gallery</a></li></ul></div>
+    <div><h4>Work with me</h4><ul><li><a href="commission.html">Commission</a></li><li><a href="contact.html">Contact</a></li><li><a href="mailto:hello@boboarts.com">Email</a></li></ul></div>
+    <div><h4>Follow</h4><ul><li><a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">TikTok</a></li><li><a href="#">Instagram</a></li><li><a href="https://wa.me/0000000000">WhatsApp</a></li></ul></div>
+  </div>
+  <div class="wordmark" aria-hidden="true">Bobo<i>arts</i></div>
+  <div class="foot-bottom"><span>© <span data-year></span> Boboarts. All rights reserved.</span><span>Shaped by hand</span></div>
+</footer>
+</body>
+</html>

@@ -1,246 +1,180 @@
 // Boboarts: shared behaviour
-
-// ---- Theme preview switcher ----
-// Remove this block (and the .theme-switcher CSS) once a palette is chosen.
-(function () {
-  const themes = [
-    { id: "kiln", label: "Kiln", bg: "#151312", accent: "#b87a50" },
-    { id: "terracotta", label: "Terra", bg: "#171717", accent: "#c8693c" },
-    { id: "earth", label: "Earth", bg: "#1a1511", accent: "#a87650" },
-    { id: "sand", label: "Sand", bg: "#ebe3d8", accent: "#9b5732" },
-  ];
-  const root = document.documentElement;
-  const fromUrl = new URLSearchParams(location.search).get("theme");
-  let current = themes.some(t => t.id === fromUrl) ? fromUrl : (localStorage.getItem("bobo-theme") || "kiln");
-  root.dataset.theme = current;
-  document.addEventListener("DOMContentLoaded", () => {
-    const box = document.createElement("div");
-    box.className = "theme-switcher";
-    box.innerHTML = "<p>Colour option</p><div class='opts'></div>";
-    const opts = box.querySelector(".opts");
-    themes.forEach(t => {
-      const b = document.createElement("button");
-      b.type = "button"; b.dataset.id = t.id;
-      b.innerHTML = `<span class="sw" style="background:linear-gradient(135deg, ${t.bg} 50%, ${t.accent} 50%)"></span>${t.label}`;
-      b.onclick = () => { current = t.id; root.dataset.theme = t.id; localStorage.setItem("bobo-theme", t.id); sync(); };
-      opts.appendChild(b);
-    });
-    const sync = () => opts.querySelectorAll("button").forEach(b => b.classList.toggle("active", b.dataset.id === current));
-    sync();
-    document.body.appendChild(box);
-  });
-})();
-
 const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
 const thumb = w => w.img ? `assets/works/${w.img}-sm.webp` : `assets/video/${w.video}.jpg`;
 const full = w => w.img ? `assets/works/${w.img}.webp` : `assets/video/${w.video}.jpg`;
-const mediaHTML = (w, small) => w.video
-  ? `<video src="assets/video/${w.video}.mp4" poster="assets/video/${w.video}.jpg" muted loop playsinline preload="metadata" data-autoplay></video>`
-  : `<img src="${small ? thumb(w) : full(w)}" alt="${w.title}, ${w.category.toLowerCase()} in clay" ${small ? 'loading="lazy"' : ""}>`;
+const media = (w, small) => w.video
+  ? `<video src="assets/video/${w.video}.mp4" poster="assets/video/${w.video}.jpg" muted loop playsinline preload="none" data-autoplay></video>`
+  : `<img src="${small ? thumb(w) : full(w)}" alt="${w.title}, ${w.category.toLowerCase()} in clay" loading="lazy">`;
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 document.addEventListener("DOMContentLoaded", () => {
   const page = document.body.dataset.page;
+  $$("[data-year]").forEach(el => (el.textContent = new Date().getFullYear()));
 
-  // Clock ("Your time")
-  const clock = $("[data-clock]");
-  const tick = () => clock && (clock.textContent = new Date().toLocaleTimeString([], { hour: "numeric", minute: "2-digit" }));
-  tick(); setInterval(tick, 15000);
-  document.querySelectorAll("[data-year]").forEach(el => (el.textContent = new Date().getFullYear()));
+  // Header: solid after scrolling, hides on scroll down
+  const header = $(".site-header");
+  let lastY = 0;
+  addEventListener("scroll", () => {
+    const y = scrollY;
+    header.classList.toggle("scrolled", y > 40);
+    header.classList.toggle("hide", y > lastY && y > 300 && !document.body.classList.contains("menu-open"));
+    lastY = y;
+  }, { passive: true });
 
-  // Mobile menu
-  const mb = $(".menu-btn"), nav = $(".nav");
-  mb && mb.addEventListener("click", () => {
-    const open = nav.classList.toggle("open");
-    mb.textContent = open ? "Close" : "Menu";
+  // Full-screen menu
+  const mb = $(".menu-btn");
+  mb.addEventListener("click", () => {
+    const open = document.body.classList.toggle("menu-open");
     mb.setAttribute("aria-expanded", open);
+    $$(".menu a").forEach((a, i) => (a.style.transitionDelay = open ? `${80 + i * 60}ms` : "0ms"));
   });
-
-  // Reveal on scroll
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .1 });
-  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+  addEventListener("keydown", e => { if (e.key === "Escape") document.body.classList.remove("menu-open"); });
 
   if (page === "home") home();
-  if (page === "works") works();
-  if (page === "project") project();
+  if (page === "gallery") gallery();
+  if (page === "work") work();
   if (page === "contact") contact();
+  if ($(".slider")) slider();
 
-  // Play videos only while on screen (home handles its own)
-  if (page !== "home") {
-    const vio = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: .25 });
-    document.querySelectorAll("video[data-autoplay]").forEach(v => vio.observe(v));
+  // Reveal on scroll
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  $$(".reveal").forEach(el => io.observe(el));
+
+  // Videos play only while visible
+  const vio = new IntersectionObserver(es => es.forEach(e => e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause()), { threshold: .2 });
+  $$("video[data-autoplay]").forEach(v => vio.observe(v));
+
+  // Image strip above footer
+  const track = $(".strip-track");
+  if (track) {
+    const imgs = window.WORKS.map(w => `<img src="${thumb(w)}" alt="" loading="lazy">`).join("");
+    track.innerHTML = imgs + imgs;
   }
 });
 
 // ---------- Home ----------
 function home() {
-  const W = window.WORKS;
-  const stage = $(".stage"), ticks = $(".ticks"), nameEl = $(".current-name"), capEl = $(".home-bottom .cap");
+  const W = window.WORKS, by = s => W.find(w => w.slug === s);
 
-  // Preloader: count to 100 with scattered thumbnails (once per visit)
-  const pre = $(".preloader");
-  if (pre) {
-    if (sessionStorage.getItem("bobo-loaded") || matchMedia("(prefers-reduced-motion: reduce)").matches) pre.remove();
-    else {
-      const spots = [[-190, -150], [130, -130], [-230, 30], [190, 40], [-30, 160]];
-      spots.forEach(([x, y], i) => {
-        const im = document.createElement("img");
-        im.src = thumb(W[[1, 5, 6, 4, 9][i]]); im.alt = "";
-        im.style.left = `calc(50% + ${x}px - 42px)`; im.style.top = `calc(50% + ${y}px - 52px)`;
-        im.style.rotate = `${(i % 2 ? 1 : -1) * (2 + i)}deg`;
-        pre.appendChild(im);
-      });
-      const num = $(".count b", pre), imgs = pre.querySelectorAll("img");
-      let n = 0;
-      const step = () => {
-        n = Math.min(100, n + Math.ceil(Math.random() * 7));
-        num.textContent = n;
-        imgs.forEach((im, i) => n > (i + 1) * 17 && im.classList.add("show"));
-        if (n < 100) setTimeout(step, 45);
-        else setTimeout(() => { pre.classList.add("done"); sessionStorage.setItem("bobo-loaded", 1); setTimeout(() => pre.remove(), 800); }, 450);
-      };
-      setTimeout(step, 200);
-    }
-  }
-
-  // Build slides
-  const tilts = [[-4, 6, -2], [3, -5, 1.5], [-2, -4, -1], [5, 4, 2], [-3, 5, 1], [2, -6, -2]];
-  const slides = W.map((w, i) => {
-    const a = document.createElement("a");
-    a.href = `work.html?p=${w.slug}`;
-    a.className = `slide ${w.shape}`;
-    a.innerHTML = `<div class="frame">${mediaHTML(w, true)}</div>`;
-    a.dataset.tilt = tilts[i % tilts.length].join(",");
-    stage.appendChild(a);
-    const t = document.createElement("i"); ticks.appendChild(t);
-    return a;
+  // Floating, tilted artworks around the hero and the drift section.
+  // [slug, left %, top %, width px, rotateY, rotateZ, parallax speed]
+  const heroFloats = [
+    ["heritage-mask", 43, 9, 120, -8, 2, .35],
+    ["boy-relief", 6, 22, 150, 22, -6, .55],
+    ["the-warrior", 82, 18, 140, -24, 6, .45],
+    ["seated-cat", 8, 78, 130, 10, -3, .7],
+    ["cornrows", 44, 82, 150, 0, -2, .8],
+    ["the-elder", 80, 74, 120, -12, 4, .6],
+  ];
+  const driftFloats = [
+    ["the-labourer", 8, 10, 170, 0, 0, .5],
+    ["profile-study", 26, 34, 140, 0, 0, .9],
+    ["the-fallen", 70, 6, 150, 0, 0, .7],
+    ["heritage-mask", 86, 30, 120, 0, 0, 1.1],
+    ["boy-relief", 60, 88, 190, 0, 0, .4],
+    ["seated-cat", 6, 70, 150, 0, 0, .8],
+    ["cornrows", 80, 68, 160, 0, 0, .6],
+  ];
+  const place = (host, list) => list.map(([slug, x, y, w, ry, rz, sp]) => {
+    const f = document.createElement("a");
+    f.className = "float"; f.href = `work.html?p=${slug}`;
+    f.style.cssText = `left:${x}%;top:${y}%;width:${w}px;aspect-ratio:4/5;transform:perspective(900px) rotateY(${ry}deg) rotateZ(${rz}deg)`;
+    f.innerHTML = `<img src="${thumb(by(slug))}" alt="${by(slug).title}" loading="lazy">`;
+    f.dataset.sp = sp; f.dataset.base = f.style.transform;
+    if (innerWidth < 700) { f.style.width = `${w * .6}px`; }
+    host.appendChild(f);
+    return f;
   });
-  // extra decorative ticks like a ruler
-  const tickEls = [...ticks.children];
+  const hero = $(".hero"), drift = $(".drift");
+  const floats = [...place(hero, heroFloats), ...place(drift, driftFloats)];
 
-  const gap = () => slides[0].offsetHeight + Math.max(48, innerHeight * .08);
-  let target = 0, pos = 0, active = -1, dragging = false, lastY = 0, moved = 0;
-  const N = W.length;
-  const wrap = i => ((i % N) + N) % N;
+  // Words in the drift paragraph light up as you scroll
+  const p = $(".drift-text p");
+  p.innerHTML = p.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(" ");
+  const words = $$(".w", p);
 
-  addEventListener("wheel", e => { target += e.deltaY / gap(); }, { passive: true });
-  stage.addEventListener("pointerdown", e => { dragging = true; lastY = e.clientY; moved = 0; });
-  addEventListener("pointermove", e => { if (!dragging) return; const d = lastY - e.clientY; moved += Math.abs(d); target += d / gap(); lastY = e.clientY; });
-  addEventListener("pointerup", () => { dragging = false; target = Math.round(target); });
-  stage.addEventListener("click", e => { if (moved > 6) e.preventDefault(); }, true);
-  addEventListener("keydown", e => {
-    if (e.key === "ArrowDown") target = Math.round(target) + 1;
-    if (e.key === "ArrowUp") target = Math.round(target) - 1;
-  });
-  // settle on the nearest slide shortly after wheel stops
-  let settle; addEventListener("wheel", () => { clearTimeout(settle); settle = setTimeout(() => (target = Math.round(target)), 140); }, { passive: true });
-
-  // Sound toggle
-  let soundOn = false;
-  const sbtn = $(".sound");
-  sbtn.addEventListener("click", () => {
-    soundOn = !soundOn;
-    sbtn.querySelector("span").textContent = soundOn ? "Sound on" : "Sound off";
-    sbtn.querySelector(".x").style.display = soundOn ? "none" : "";
-    slides.forEach((s, i) => { const v = s.querySelector("video"); if (v) v.muted = !(soundOn && i === active); });
-  });
-
-  function frame() {
-    pos += (target - pos) * .09;
-    const g = gap();
-    slides.forEach((s, i) => {
-      // shortest offset on the loop
-      let o = i - pos; o = o - N * Math.round(o / N);
-      const [rx, ry, rz] = s.dataset.tilt.split(",").map(Number);
-      const k = Math.max(-1, Math.min(1, o));
-      const x = (i % 2 ? 1 : -1) * 18 * Math.min(1, Math.abs(o));
-      s.style.transform = `translate3d(calc(-50% + ${x}px), calc(-50% + ${o * g}px), 0) rotateX(${rx * k}deg) rotateY(${ry * (0.4 + Math.abs(k))}deg) rotateZ(${rz * Math.abs(k) * .8}deg)`;
-      s.style.zIndex = 100 - Math.round(Math.abs(o) * 10);
-      s.style.visibility = Math.abs(o) > 2.2 ? "hidden" : "visible";
+  const onScroll = () => {
+    const y = scrollY;
+    if (!reduced) floats.forEach(f => {
+      const host = f.parentElement, top = host.offsetTop;
+      f.style.transform = `translateY(${-(y - top) * f.dataset.sp * .5}px) ${f.dataset.base}`;
     });
-    const cur = wrap(Math.round(pos));
-    if (cur !== active) {
-      active = cur;
-      const w = W[cur];
-      nameEl.innerHTML = `${w.title}<small>${w.category}</small>`;
-      capEl.textContent = w.format;
-      tickEls.forEach((t, i) => { t.className = i === cur ? "on" : Math.abs(i - cur) === 1 ? "near" : ""; });
-      slides.forEach((s, i) => {
-        const v = s.querySelector("video"); if (!v) return;
-        if (Math.abs(i - cur) <= 1 || Math.abs(i - cur) === N - 1) { v.muted = !(soundOn && i === cur); v.play().catch(() => {}); } else v.pause();
-      });
-    }
-    requestAnimationFrame(frame);
-  }
-  frame();
+    const r = drift.getBoundingClientRect();
+    const prog = Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / (r.height * .7)));
+    const n = Math.round(prog * words.length);
+    words.forEach((w, i) => w.classList.toggle("on", i < n));
+  };
+  addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
 }
 
-// ---------- Works: horizontal strip ----------
-function works() {
-  const strip = $(".strip");
-  const heights = [300, 220, 360, 260, 330, 240, 280, 350, 230, 310, 270, 250];
-  window.WORKS.forEach((w, i) => {
-    const h = heights[i % heights.length];
-    const ratio = w.shape === "land" ? 4 / 3 : w.shape === "tall" ? 9 / 14 : 4 / 5;
-    const a = document.createElement("a");
-    a.href = `work.html?p=${w.slug}`;
-    a.className = "reveal";
-    a.innerHTML = `<span>${w.title}</span><div class="frame" style="height:${h}px;width:${Math.round(h * ratio)}px">${mediaHTML(w, true)}</div>`;
-    a.style.transitionDelay = `${i * 50}ms`;
-    strip.appendChild(a);
+// ---------- Artwork slider ----------
+function slider() {
+  const s = $(".slider"), wrap = $(".slider-wrap");
+  if (!s.children.length) window.WORKS.forEach(w => {
+    s.insertAdjacentHTML("beforeend", `<a class="slide" href="work.html?p=${w.slug}">
+      <div class="ph">${media(w, true)}</div>
+      <h3>${w.title} <span class="it">— ${w.format}</span></h3>
+      <span class="it-sm">${w.category}</span></a>`);
   });
-  requestAnimationFrame(() => strip.querySelectorAll(".reveal").forEach(el => el.classList.add("in")));
-
-  // Vertical wheel scrolls the strip sideways (desktop)
-  if (matchMedia("(min-width: 761px)").matches) {
-    let x = 0, tx = 0;
-    const max = () => Math.max(0, strip.scrollWidth - innerWidth);
-    addEventListener("wheel", e => { tx = Math.max(0, Math.min(max(), tx + e.deltaY + e.deltaX)); }, { passive: true });
-    (function loop() { x += (tx - x) * .1; strip.style.transform = `translateX(${-x}px)`; requestAnimationFrame(loop); })();
-  }
+  let i = 0;
+  const step = () => s.children[0].getBoundingClientRect().width + 20;
+  const max = () => Math.max(0, Math.ceil((s.scrollWidth - wrap.clientWidth) / step()));
+  const go = d => { i = Math.min(max(), Math.max(0, i + d)); s.style.transform = `translateX(${-i * step()}px)`; };
+  $(".slider-nav .prev")?.addEventListener("click", () => go(-1));
+  $(".slider-nav .next")?.addEventListener("click", () => go(1));
 }
 
-// ---------- Project detail ----------
-function project() {
+// ---------- Gallery ----------
+function gallery() {
+  const g = $(".gallery");
+  window.WORKS.forEach(w => g.insertAdjacentHTML("beforeend", `<a class="card reveal" data-cat="${w.cat}" href="work.html?p=${w.slug}">
+    <div class="ph">${media(w, true)}</div>
+    <h3>${w.title} <span class="it">— ${w.format}</span></h3>
+    <span class="it-sm">${w.category}</span></a>`));
+  const btns = $$(".filters button");
+  btns.forEach(b => b.addEventListener("click", () => {
+    btns.forEach(x => x.classList.toggle("active", x === b));
+    $$(".gallery .card").forEach(c => (c.style.display = b.dataset.f === "all" || c.dataset.cat === b.dataset.f ? "" : "none"));
+  }));
+}
+
+// ---------- Work detail ----------
+function work() {
   const W = window.WORKS;
-  const slug = new URLSearchParams(location.search).get("p");
-  const i = Math.max(0, W.findIndex(w => w.slug === slug));
+  const i = Math.max(0, W.findIndex(w => w.slug === new URLSearchParams(location.search).get("p")));
   const w = W[i], next = W[(i + 1) % W.length];
   document.title = `${w.title} | Boboarts`;
-  $(".project").innerHTML = `
-    <div class="left">
-      <div class="muted">Work</div>
-      <h1>${w.title}</h1>
-      <dl class="kv">
-        <dt>Category</dt><dd>${w.category}</dd>
-        <dt>Format</dt><dd>${w.format}</dd>
-        <dt>Medium</dt><dd>Clay, hand-sculpted</dd>
-      </dl>
-      <div class="muted" style="margin-bottom:6px">About the piece</div>
-      <p class="info">${w.info}</p>
-      <a class="btn" href="contact.html?commission=${encodeURIComponent(w.category)}">Commission something similar</a>
-      <div><a class="next" href="work.html?p=${next.slug}"><span class="muted">Next work</span><br>${next.title}<img src="${thumb(next)}" alt=""></a></div>
-    </div>
+  $(".page-head").innerHTML = `<div><span class="it-sm">${w.category}</span><h1 class="h-xl" style="margin-top:10px">${w.title}</h1></div>
+    <a class="pill" href="gallery.html">All works <span class="arr">↗</span></a>`;
+  $(".detail").innerHTML = `
     <div class="media">${w.video
       ? `<video src="assets/video/${w.video}.mp4" poster="assets/video/${w.video}.jpg" controls playsinline loop muted data-autoplay></video>`
-      : `<img src="${full(w)}" alt="${w.title}, ${w.category.toLowerCase()} in clay">`}</div>`;
+      : `<img src="${full(w)}" alt="${w.title}, ${w.category.toLowerCase()} in clay">`}</div>
+    <div class="meta">
+      <p class="info">${w.info}</p>
+      <dl class="kv"><dt>Category</dt><dd>${w.category}</dd><dt>Format</dt><dd>${w.format}</dd><dt>Medium</dt><dd>Clay, hand-sculpted</dd></dl>
+      <a class="pill solid" href="contact.html?commission=${encodeURIComponent(w.category)}">Commission something similar <span class="arr">↗</span></a>
+      <a class="card" href="work.html?p=${next.slug}" style="margin-top:56px;max-width:220px">
+        <span class="it-sm">Next work</span>
+        <div class="ph" style="margin-top:10px;aspect-ratio:4/5">${media(next, true)}</div>
+        <h3>${next.title}</h3></a>
+    </div>`;
 }
 
-// ---------- Contact form ----------
+// ---------- Contact ----------
 function contact() {
-  const form = $("#enquiry");
+  const form = $("#enquiry"), sel = form.querySelector("[name=type]");
   const want = new URLSearchParams(location.search).get("commission");
-  const sel = form.querySelector("[name=type]");
-  if (want) {
-    const match = [...sel.options].find(o => o.value.toLowerCase() === want.toLowerCase() || o.text.toLowerCase() === want.toLowerCase());
-    if (match) sel.value = match.value;
-  }
+  if (want) { const o = [...sel.options].find(o => o.text.toLowerCase() === want.toLowerCase()); if (o) sel.value = o.value; }
   // No backend yet: open the visitor's mail app with the message filled in.
   // To collect messages instead, give the form an action (e.g. Formspree) and method="POST".
   form.addEventListener("submit", e => {
     if (form.getAttribute("action")) return;
     e.preventDefault();
     const d = new FormData(form);
-    const body = [`Name: ${d.get("name")}`, `Email: ${d.get("email")}`, `Phone: ${d.get("phone") || "-"}`, `Commission: ${d.get("type")}`, "", d.get("message")].join("\n");
+    const body = [`Name: ${d.get("name")}`, `Email: ${d.get("email")}`, `Phone: ${d.get("phone") || "-"}`, `Commission: ${d.get("type")}`, `Size / budget: ${d.get("budget") || "-"}`, "", d.get("message")].join("\n");
     location.href = `mailto:${form.dataset.email}?subject=${encodeURIComponent("Commission enquiry: " + d.get("type"))}&body=${encodeURIComponent(body)}`;
   });
 }
