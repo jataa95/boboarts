@@ -5,10 +5,17 @@ Portfolio and commissions website for Boboarts, a clay sculpture studio.
 A plain static site with no build step: open `index.html` in a browser, or host on GitHub Pages, Netlify or Vercel.
 
 ## Pages
-- `index.html`: hero, filterable gallery with lightbox, studio process videos, commission call to action
-- `about.html`: artist story, approach and influences
-- `commission.html`: shop-style commission types, process steps and FAQ
+Layout follows the reference site (theoportfolio.framer.photos): a fixed four-column header, a full-screen home carousel and minimal type.
+
+- `index.html`: counter preloader, then a tilted vertical carousel of works you browse by scrolling, dragging or using the arrow keys, with a sound toggle for the videos
+- `works.html`: large heading and a horizontal strip of every work (the mouse wheel scrolls it sideways)
+- `work.html?p=<slug>`: project page for one piece, with details, a commission button and a link to the next work
+- `about.html`: artist statement, photo, and practice, subjects, influences and process
+- `commission.html`: commission types with "Request this" links, and how it works
 - `contact.html`: contact details and an enquiry form (`?commission=<type>` preselects the type)
+
+## Adding or editing works
+All works are listed in `js/works.js`. Add an entry there, with images in `assets/works/` (`name.webp` and `name-sm.webp`) or a clip in `assets/video/` (`name.mp4` and `name.jpg` poster), and it appears on the home, Work and project pages.
 
 ## Colour options
 Four palettes live in `css/style.css` (`kiln`, `terracotta`, `earth`, `sand`). A floating switcher in the bottom-left corner previews them, and `?theme=earth` also works in the URL.

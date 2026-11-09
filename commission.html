@@ -3,120 +3,84 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Commission a sculpture | Boboarts</title>
+<title>Commission | Boboarts</title>
 <meta name="description" content="Commission a hand-sculpted clay piece from Boboarts: relief portraits, figurative panels, pets and animals, heritage masks and custom work.">
-<meta property="og:title" content="Commission a sculpture | Boboarts">
+<meta property="og:title" content="Commission | Boboarts">
 <meta property="og:description" content="Commission a hand-sculpted clay piece from Boboarts: relief portraits, figurative panels, pets and animals, heritage masks and custom work.">
-<meta property="og:image" content="assets/works/boy-relief.webp">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23b87a50'/><text x='50' y='68' font-size='54' text-anchor='middle' font-family='Georgia' fill='%23151312'>B</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<meta property="og:image" content="/assets/works/boy-relief.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23b87a50'/></svg>">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/works.js"></script>
 <script src="js/main.js"></script>
 </head>
-<body>
+<body data-page="commission" class="page">
 <header class="site-header">
-  <div class="container">
-    <a class="logo" href="index.html">Bobo<span>arts</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="commission.html" aria-current="page">Commission</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <a class="brand" href="index.html"><b>Boboarts</b><span>Clay sculptor</span></a>
+  <div class="clock"><div>Commissions open</div><span>Your time</span><b data-clock></b></div>
+  <nav class="nav"><a href="works.html">Work</a><a href="about.html">About</a><a href="commission.html" aria-current="page">Commission</a><a href="contact.html">Contact</a></nav>
+  <div class="socials">
+    <a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+    <a href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
   </div>
+  <button class="menu-btn" aria-expanded="false">Menu</button>
 </header>
 <main>
-  <section class="page-intro container">
-    <p class="eyebrow">Commission</p>
-    <h1>Made for <em>you,</em><br>by hand.</h1>
-    <p>Choose a commission type below. Each piece is made to order from your references, and pricing depends on size, detail and delivery.</p>
-  </section>
-
-  <section class="container">
-    <div class="shop">
-      <article class="card reveal">
-        <div class="thumb"><img src="assets/works/boy-relief-sm.webp" alt="Relief Portrait" loading="lazy"><span class="tag">Most popular</span></div>
-        <div class="meta"><h3>Relief Portrait</h3><span class="price">Price on request</span></div>
-        <p>A personal portrait carved in relief from your photo. Perfect for a loved one, a memorial or a milestone.</p>
-        <div class="specs"><span>From photo</span><span>Clay relief</span><span>Wall-mounted</span></div>
-        <a class="btn" href="contact.html?commission=relief-portrait">Request this →</a>
-      </article>
-      <article class="card reveal">
-        <div class="thumb"><img src="assets/works/the-labourer-sm.webp" alt="Figurative Panel" loading="lazy"><span class="tag">Signature</span></div>
-        <div class="meta"><h3>Figurative Panel</h3><span class="price">Price on request</span></div>
-        <p>A dramatic full-figure scene in relief inspired by classical carving, built around your theme or story.</p>
-        <div class="specs"><span>Custom scene</span><span>Large format</span></div>
-        <a class="btn" href="contact.html?commission=figurative-panel">Request this →</a>
-      </article>
-      <article class="card reveal">
-        <div class="thumb"><img src="assets/works/seated-cat-sm.webp" alt="Pet &amp; Animal" loading="lazy"><span class="tag">Commission</span></div>
-        <div class="meta"><h3>Pet &amp; Animal</h3><span class="price">Price on request</span></div>
-        <p>Your pet, or any animal, sculpted in the round with real character and texture.</p>
-        <div class="specs"><span>In the round</span><span>From photos</span></div>
-        <a class="btn" href="contact.html?commission=animal">Request this →</a>
-      </article>
-      <article class="card reveal">
-        <div class="thumb"><img src="assets/works/heritage-mask-sm.webp" alt="Heritage Mask" loading="lazy"><span class="tag">Commission</span></div>
-        <div class="meta"><h3>Heritage Mask</h3><span class="price">Price on request</span></div>
-        <p>Masks and pieces inspired by heritage art, made as statement wall pieces or gifts.</p>
-        <div class="specs"><span>Wall piece</span><span>Clay</span></div>
-        <a class="btn" href="contact.html?commission=heritage-mask">Request this →</a>
-      </article>
-      <article class="card reveal">
-        <div class="thumb"><img src="assets/works/the-elder-sm.webp" alt="Face Study" loading="lazy"><span class="tag">Commission</span></div>
-        <div class="meta"><h3>Face Study</h3><span class="price">Price on request</span></div>
-        <p>A deeper, more sculptural face relief that captures expression and likeness up close.</p>
-        <div class="specs"><span>High relief</span><span>From photo</span></div>
-        <a class="btn" href="contact.html?commission=face-study">Request this →</a>
-      </article>
-      <article class="card reveal">
-        <div class="thumb"><img src="assets/works/cornrows-sm.webp" alt="Something Else" loading="lazy"><span class="tag">Open brief</span></div>
-        <div class="meta"><h3>Something Else</h3><span class="price">Let&#39;s talk</span></div>
-        <p>Have an idea that doesn&#39;t fit a box? Describe it and we&#39;ll shape it together.</p>
-        <div class="specs"><span>Any subject</span><span>Any size</span></div>
-        <a class="btn" href="contact.html?commission=custom">Request this →</a>
-      </article>
+  <h1 class="mega pad">Things I<br>can make <span class="accent">for you</span></h1>
+  <div class="offer-grid">
+    <div class="offer reveal">
+      <a href="contact.html?commission=Relief portrait"><div class="frame"><img src="assets/works/boy-relief-sm.webp" alt="Relief portrait example" loading="lazy"></div></a>
+      <div class="row"><b>Relief portrait</b><span class="muted">Price on request</span></div>
+      <p>A personal portrait carved in relief from your photo, for a loved one, a memorial or a milestone.</p>
+      <a class="req" href="contact.html?commission=Relief portrait">Request this →</a>
     </div>
-  </section>
-
-  <section class="container">
-    <div class="section-head"><div><p class="eyebrow">How it works</p><h2>From idea<br>to <em class="accent">delivery</em></h2></div></div>
-    <div class="steps">
-      <div class="step reveal"><div class="num">01</div><h3>Enquire</h3><p>Send your idea, references and preferred size through the contact form.</p></div>
-      <div class="step reveal"><div class="num">02</div><h3>Quote</h3><p>Receive a price and timeline. A deposit secures your place in the queue.</p></div>
-      <div class="step reveal"><div class="num">03</div><h3>Sculpt</h3><p>Get progress photos and videos as your piece takes shape in the studio.</p></div>
-      <div class="step reveal"><div class="num">04</div><h3>Deliver</h3><p>Your finished piece is carefully packed for collection or delivery.</p></div>
+    <div class="offer reveal">
+      <a href="contact.html?commission=Figurative relief"><div class="frame"><img src="assets/works/the-labourer-sm.webp" alt="Figurative panel example" loading="lazy"></div></a>
+      <div class="row"><b>Figurative panel</b><span class="muted">Price on request</span></div>
+      <p>A full-figure scene in relief inspired by classical carving, built around your theme or story.</p>
+      <a class="req" href="contact.html?commission=Figurative relief">Request this →</a>
     </div>
-  </section>
-
-  <section class="container faq">
-    <div class="section-head"><div><p class="eyebrow">Questions</p><h2>Good to <em class="accent">know</em></h2></div></div>
-    <details><summary>How long does a commission take?</summary><p>It depends on size and detail. A detailed piece can take around a week of sculpting, and you'll get a timeline with your quote.</p></details>
-    <details><summary>What do I need to send?</summary><p>Clear, well-lit photos of the subject from a few angles, plus any notes on pose, size and where the piece will be displayed.</p></details>
-    <details><summary>Do you ship?</summary><p>Yes. Pieces are packed carefully and delivery options are confirmed when you receive your quote.</p></details>
-    <details><summary>How do I pay?</summary><p>A deposit confirms the commission and the balance is due before delivery. Payment details are shared with your quote.</p></details>
-  </section>
-
-  <section class="cta">
-    <div class="container">
-      <p class="eyebrow">Ready?</p>
-      <h2>Let's make<br><em>something lasting.</em></h2>
-      <a class="btn" href="contact.html">Start your enquiry →</a>
+    <div class="offer reveal">
+      <a href="contact.html?commission=Animal study"><div class="frame"><img src="assets/works/seated-cat-sm.webp" alt="Pet &amp; animal example" loading="lazy"></div></a>
+      <div class="row"><b>Pet &amp; animal</b><span class="muted">Price on request</span></div>
+      <p>Your pet, or any animal, sculpted in the round with real character and texture.</p>
+      <a class="req" href="contact.html?commission=Animal study">Request this →</a>
     </div>
+    <div class="offer reveal">
+      <a href="contact.html?commission=Heritage"><div class="frame"><img src="assets/works/heritage-mask-sm.webp" alt="Heritage mask example" loading="lazy"></div></a>
+      <div class="row"><b>Heritage mask</b><span class="muted">Price on request</span></div>
+      <p>Masks and pieces inspired by heritage art, made as statement wall pieces or gifts.</p>
+      <a class="req" href="contact.html?commission=Heritage">Request this →</a>
+    </div>
+    <div class="offer reveal">
+      <a href="contact.html?commission=Face study"><div class="frame"><img src="assets/works/the-elder-sm.webp" alt="Face study example" loading="lazy"></div></a>
+      <div class="row"><b>Face study</b><span class="muted">Price on request</span></div>
+      <p>A deeper, more sculptural face in high relief that captures expression up close.</p>
+      <a class="req" href="contact.html?commission=Face study">Request this →</a>
+    </div>
+    <div class="offer reveal">
+      <a href="contact.html?commission=Custom"><div class="frame"><img src="assets/works/cornrows-sm.webp" alt="Open brief example" loading="lazy"></div></a>
+      <div class="row"><b>Open brief</b><span class="muted">Let's talk</span></div>
+      <p>Have an idea that doesn't fit a box? Describe it and we'll shape it together.</p>
+      <a class="req" href="contact.html?commission=Custom">Request this →</a>
+    </div>
+  </div>
+  <section class="how">
+    <h2>How it works</h2>
+    <dl class="rows">
+      <dt class="muted">01</dt><dd>Enquire</dd><dd class="d muted">Send your idea, reference photos and preferred size through the contact form.</dd>
+      <dt class="muted">02</dt><dd>Quote</dd><dd class="d muted">You get a price and timeline. A deposit secures your place in the queue.</dd>
+      <dt class="muted">03</dt><dd>Sculpt</dd><dd class="d muted">Progress photos and videos as your piece takes shape in the studio. A detailed piece takes around a week.</dd>
+      <dt class="muted">04</dt><dd>Deliver</dd><dd class="d muted">Your finished piece is carefully packed for collection or delivery. The balance is due before it ships.</dd>
+    </dl>
   </section>
 </main>
 <footer class="site-footer">
-  <div class="container">
-    <span>© <span data-year></span> Boboarts. Hand-sculpted in clay.</span>
-    <div class="links">
-      <a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">TikTok</a>
-      <a href="#" target="_blank" rel="noopener">Instagram</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
+  <span>© <span data-year></span> Boboarts. All rights reserved.</span>
+  <span>Hand-sculpted in clay</span>
+  <a class="r" href="contact.html">Start a commission</a>
 </footer>
 </body>
 </html>

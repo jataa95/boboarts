@@ -7,123 +7,39 @@
 <meta name="description" content="Boboarts is the studio of a sculptor working in clay: relief portraits, figures, animals and heritage masks, made by hand and available to commission.">
 <meta property="og:title" content="Boboarts | Hand-sculpted clay works and commissions">
 <meta property="og:description" content="Boboarts is the studio of a sculptor working in clay: relief portraits, figures, animals and heritage masks, made by hand and available to commission.">
-<meta property="og:image" content="assets/works/boy-relief.webp">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23b87a50'/><text x='50' y='68' font-size='54' text-anchor='middle' font-family='Georgia' fill='%23151312'>B</text></svg>">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<meta property="og:image" content="/assets/works/boy-relief.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23b87a50'/></svg>">
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=switzer@400,500,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
+<script src="js/works.js"></script>
 <script src="js/main.js"></script>
 </head>
-<body>
+<body data-page="home" class="home">
 <header class="site-header">
-  <div class="container">
-    <a class="logo" href="index.html">Bobo<span>arts</span></a>
-    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
-    <nav class="nav">
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="about.html">About</a>
-      <a href="commission.html">Commission</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <a class="brand" href="index.html"><b>Boboarts</b><span>Clay sculptor</span></a>
+  <div class="clock"><div>Commissions open</div><span>Your time</span><b data-clock></b></div>
+  <nav class="nav"><a href="works.html">Work</a><a href="about.html">About</a><a href="commission.html">Commission</a><a href="contact.html">Contact</a></nav>
+  <div class="socials">
+    <a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener" aria-label="TikTok">TT</a>
+    <a href="#" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+    <a href="https://wa.me/0000000000" target="_blank" rel="noopener" aria-label="WhatsApp">WA</a>
   </div>
+  <button class="menu-btn" aria-expanded="false">Menu</button>
 </header>
-<main>
-  <section class="hero container">
-    <p class="eyebrow reveal">Sculpture · Relief · Portraiture</p>
-    <h1 class="reveal">Shaped by hand,<br><em>fired</em> in clay.</h1>
-    <div class="hero-row reveal">
-      <p>Boboarts is a sculpture studio making relief portraits, figures, animals and heritage pieces, each one shaped by hand from raw clay.</p>
-      <div class="hero-actions">
-        <a class="btn" href="commission.html">Commission a piece →</a>
-        <a class="btn ghost" href="#works">View works</a>
-      </div>
-    </div>
-    <div class="hero-media">
-      <figure class="tall reveal"><img src="assets/works/the-warrior-sm.webp" alt="The Warrior, figurative clay relief"></figure>
-      <figure class="mid reveal"><img src="assets/works/boy-relief.webp" alt="Relief portrait of a boy in clay"></figure>
-      <figure class="tall reveal"><img src="assets/works/heritage-mask-sm.webp" alt="Heritage mask in clay"></figure>
-    </div>
-  </section>
-
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Relief portraits</span><span>Figurative panels</span><span>Animal studies</span><span>Heritage masks</span><span>Custom commissions</span>
-      <span>Relief portraits</span><span>Figurative panels</span><span>Animal studies</span><span>Heritage masks</span><span>Custom commissions</span>
-    </div>
-  </div>
-
-  <section id="works" class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">Selected works</p>
-        <h2>The <em class="accent">collection</em></h2>
-      </div>
-      <div class="filters">
-        <button class="chip active" data-filter="all">All</button>
-        <button class="chip" data-filter="portrait">Portraits</button>
-        <button class="chip" data-filter="relief">Figurative</button>
-        <button class="chip" data-filter="animal">Animals</button>
-        <button class="chip" data-filter="heritage">Heritage</button>
-      </div>
-    </div>
-    <div class="gallery">
-<figure class="work reveal" data-cat="relief"><img src="assets/works/the-labourer-sm.webp" data-full="assets/works/the-labourer.webp" alt="The Labourer" loading="lazy"><figcaption><strong>The Labourer</strong><small>Relief · Clay</small></figcaption></figure>
-<figure class="work reveal" data-cat="portrait"><img src="assets/works/boy-relief-sm.webp" data-full="assets/works/boy-relief.webp" alt="Portrait of a Boy" loading="lazy"><figcaption><strong>Portrait of a Boy</strong><small>Relief portrait</small></figcaption></figure>
-<figure class="work reveal" data-cat="animal"><img src="assets/works/seated-cat-sm.webp" data-full="assets/works/seated-cat.webp" alt="Seated Cat" loading="lazy"><figcaption><strong>Seated Cat</strong><small>In the round</small></figcaption></figure>
-<figure class="work reveal" data-cat="relief"><img src="assets/works/the-warrior-sm.webp" data-full="assets/works/the-warrior.webp" alt="The Warrior" loading="lazy"><figcaption><strong>The Warrior</strong><small>Relief · Clay</small></figcaption></figure>
-<figure class="work reveal" data-cat="portrait"><img src="assets/works/cornrows-sm.webp" data-full="assets/works/cornrows.webp" alt="Cornrows" loading="lazy"><figcaption><strong>Cornrows</strong><small>Relief portrait</small></figcaption></figure>
-<figure class="work reveal" data-cat="heritage"><img src="assets/works/heritage-mask-sm.webp" data-full="assets/works/heritage-mask.webp" alt="Heritage Mask" loading="lazy"><figcaption><strong>Heritage Mask</strong><small>Mask · Clay</small></figcaption></figure>
-<figure class="work reveal" data-cat="portrait"><img src="assets/works/the-elder-sm.webp" data-full="assets/works/the-elder.webp" alt="The Elder" loading="lazy"><figcaption><strong>The Elder</strong><small>Relief portrait</small></figcaption></figure>
-<figure class="work reveal" data-cat="relief"><img src="assets/works/the-fallen-sm.webp" data-full="assets/works/the-fallen.webp" alt="The Fallen" loading="lazy"><figcaption><strong>The Fallen</strong><small>Relief · Clay</small></figcaption></figure>
-<figure class="work reveal" data-cat="portrait"><img src="assets/works/profile-study-sm.webp" data-full="assets/works/profile-study.webp" alt="Profile Study" loading="lazy"><figcaption><strong>Profile Study</strong><small>Relief portrait</small></figcaption></figure>
-    </div>
-  </section>
-
-  <section class="container">
-    <div class="section-head">
-      <div>
-        <p class="eyebrow">In the studio</p>
-        <h2>From reference<br>to <em class="accent">relief</em></h2>
-      </div>
-      <p style="color:var(--muted);max-width:38ch;margin:0">Every piece starts with a reference and a block of clay. Here are a few recent ones in progress.</p>
-    </div>
-    <div class="process">
-      <figure class="reveal"><video data-autoplay muted loop playsinline preload="none" poster="assets/video/tortoise.jpg" src="assets/video/tortoise.mp4"></video><figcaption><b>Tortoise</b><span>One week</span></figcaption></figure>
-      <figure class="reveal"><video data-autoplay muted loop playsinline preload="none" poster="assets/video/mask.jpg" src="assets/video/mask.mp4"></video><figcaption><b>Heritage mask</b><span>Relief</span></figcaption></figure>
-      <figure class="reveal"><video data-autoplay muted loop playsinline preload="none" poster="assets/video/tiger.jpg" src="assets/video/tiger.mp4"></video><figcaption><b>Tiger</b><span>In the round</span></figcaption></figure>
-    </div>
-  </section>
-
-  <section class="container">
-    <div class="split">
-      <img class="reveal" src="assets/works/cornrows.webp" alt="Cornrows, a relief portrait in clay" loading="lazy">
-      <div class="reveal">
-        <p class="eyebrow">About the studio</p>
-        <h2>Clay that<br><em class="accent">remembers</em> a face.</h2>
-        <p>Boboarts began with a simple habit: sculpt every day and share the work. That practice has become a body of relief portraits, figurative panels and animal studies, all built by hand.</p>
-        <a class="btn ghost" href="about.html">Read the story →</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="cta">
-    <div class="container">
-      <p class="eyebrow">Commissions open</p>
-      <h2>Your portrait,<br><em>in clay.</em></h2>
-      <a class="btn" href="commission.html">Start a commission →</a>
-    </div>
-  </section>
-</main>
-<footer class="site-footer">
-  <div class="container">
-    <span>© <span data-year></span> Boboarts. Hand-sculpted in clay.</span>
-    <div class="links">
-      <a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">TikTok</a>
-      <a href="#" target="_blank" rel="noopener">Instagram</a>
-      <a href="contact.html">Contact</a>
-    </div>
-  </div>
-</footer>
+<div class="preloader" aria-hidden="true"><div class="count"><b>0</b><small>Boboarts</small></div></div>
+<p class="home-intro">Sculptor working in clay. I make relief portraits, figures, animals and heritage pieces, <em>by hand</em> from start to finish.</p>
+<div class="stage" aria-label="Selected works. Scroll or drag to browse."></div>
+<div class="ticks" aria-hidden="true"></div>
+<div class="current-name" aria-live="polite"></div>
+<button class="sound" type="button" aria-label="Toggle video sound">
+  <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 6h3l4-3v10l-4-3H2z"/><path class="x" d="M11 6l4 4m0-4l-4 4" stroke="currentColor" stroke-width="1.4"/></svg>
+  <span>Sound off</span>
+</button>
+<div class="home-bottom">
+  <span>[ Scroll ]</span>
+  <span class="cap"></span>
+  <span class="r">© <span data-year></span> Boboarts</span>
+</div>
 </body>
 </html>
