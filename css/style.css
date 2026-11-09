@@ -1,6 +1,7 @@
 /* ==========================================================
    Boboarts: shared styles
-   Palette: Sand (light clay) with a film-grain overlay.
+   Brand colours: Sand, Charcoal and Clay, with a film-grain overlay.
+   Sections with class="dark" (bands, CTA, footer, menu) swap to charcoal.
    ========================================================== */
 
 :root {
@@ -8,7 +9,10 @@
   --bg-2: #ddd1c1;        /* darker band */
   --card: #d3c5b2;
   --line: #c3b39e;
-  --text: #1a1715;        /* mild black */
+  --charcoal: #22201e;    /* charcoal black */
+  --charcoal-2: #2c2926;
+  --sand: #e8ded1;
+  --text: var(--charcoal);
   --muted: #6f6256;
   --accent: #9b5732;      /* clay */
   --accent-2: #b8764b;
@@ -16,6 +20,17 @@
   --body: "Inter", system-ui, sans-serif;
   --serif: "Taviraj", Georgia, serif;
   --pad: clamp(18px, 2.2vw, 32px);
+}
+/* Charcoal sections: same components, inverted palette */
+.dark {
+  --bg: var(--charcoal);
+  --bg-2: var(--charcoal-2);
+  --card: #35312d;
+  --line: #3f3a35;
+  --text: var(--sand);
+  --muted: #a39686;
+  --accent: #c98a5e;
+  background: var(--bg); color: var(--text);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -35,7 +50,7 @@ button { font: inherit; color: inherit; }
 body::after {
   content: ""; position: fixed; inset: -50%; z-index: 999; pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  opacity: .22; mix-blend-mode: multiply;
+  opacity: .32; mix-blend-mode: overlay;
   animation: grain 1.2s steps(6) infinite;
 }
 @keyframes grain {
@@ -61,7 +76,7 @@ body::after {
 .wrap { padding-inline: var(--pad); }
 section { padding: clamp(72px, 10vw, 140px) 0 0; }
 section.band:has(.two-col) { padding-top: 0; }
-.band { padding-top: clamp(72px, 10vw, 140px); background: var(--bg-2); padding-bottom: clamp(72px, 10vw, 140px); margin-top: clamp(72px, 10vw, 140px); }
+.band { padding-top: clamp(72px, 10vw, 140px); background: var(--bg); padding-bottom: clamp(72px, 10vw, 140px); margin-top: clamp(72px, 10vw, 140px); }
 .center { text-align: center; }
 .center .lead { margin-inline: auto; }
 
@@ -99,11 +114,13 @@ section.band:has(.two-col) { padding-top: 0; }
 .menu-btn span { display: block; width: 16px; height: 1px; background: currentColor; position: relative; transition: transform .3s; }
 .menu-btn span::before, .menu-btn span::after { content: ""; position: absolute; left: 0; width: 16px; height: 1px; background: currentColor; transition: transform .3s, top .3s; }
 .menu-btn span::before { top: -4px; } .menu-btn span::after { top: 4px; }
+.menu-open .site-header { color: var(--sand); background: transparent !important; }
+.menu-open .site-header .pill, .menu-open .menu-btn { border-color: var(--sand); }
 .menu-open .menu-btn span { background: transparent; }
 .menu-open .menu-btn span::before { top: 0; transform: rotate(45deg); }
 .menu-open .menu-btn span::after { top: 0; transform: rotate(-45deg); }
 .menu {
-  position: fixed; inset: 0; z-index: 70; background: var(--bg);
+  position: fixed; inset: 0; z-index: 70; background: var(--charcoal); color: var(--sand);
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
   opacity: 0; visibility: hidden; transition: opacity .45s, visibility .45s;
 }
@@ -114,7 +131,7 @@ section.band:has(.two-col) { padding-top: 0; }
   transform: translateY(24px); opacity: 0; transition: transform .6s cubic-bezier(.2,.7,.2,1), opacity .6s, color .2s;
 }
 .menu-open .menu a { transform: none; opacity: 1; }
-.menu a:hover, .menu a[aria-current="page"] { color: var(--accent); }
+.menu a:hover, .menu a[aria-current="page"] { color: #c98a5e; }
 .menu-open { overflow: hidden; }
 
 /* ---------- Home hero with floating art ---------- */
@@ -213,7 +230,7 @@ section.band:has(.two-col) { padding-top: 0; }
 @media (max-width: 760px) { .duo { grid-template-columns: 1fr; } .info4 { grid-template-columns: 1fr 1fr; } }
 
 /* CTA + image marquee */
-.cta { text-align: center; padding: clamp(80px, 10vw, 140px) 0 0; background: var(--bg-2); margin-top: clamp(72px, 10vw, 140px); }
+.cta { text-align: center; padding: clamp(80px, 10vw, 140px) 0 0; background: var(--bg); margin-top: clamp(72px, 10vw, 140px); }
 .cta .pill { margin-top: 24px; }
 .strip { overflow: hidden; margin-top: 72px; }
 .strip-track { display: flex; gap: 18px; align-items: flex-end; width: max-content; animation: marq 50s linear infinite; }
@@ -223,7 +240,7 @@ section.band:has(.two-col) { padding-top: 0; }
 @keyframes marq { to { transform: translateX(-50%); } }
 
 /* Footer */
-.site-footer { background: var(--bg-2); padding: 72px var(--pad) 22px; }
+.site-footer { background: var(--bg); border-top: 1px solid var(--line); padding: 72px var(--pad) 22px; }
 .foot-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; }
 .foot-top p { text-transform: uppercase; font-size: 12px; max-width: 36ch; margin: 0; }
 .foot-top h4 { font-size: 12px; color: var(--muted); font-weight: 400; margin: 0 0 12px; }
