@@ -94,12 +94,54 @@ function home() {
   p.innerHTML = p.textContent.trim().split(/\s+/).map(w => `<span class="w">${w}</span>`).join(" ");
   const words = $$(".w", p);
 
-  const onScroll = () => {
-    const y = scrollY;
-    if (!reduced) floats.forEach(f => {
-      const host = f.parentElement, top = host.offsetTop;
-      f.style.transform = `translateY(${-(y - top) * f.dataset.sp * .5}px) ${f.dataset.base}`;
+  // Organic, never-repeating drift for each floating image.
+  // Every float gets its own random amplitudes, speeds and phases; summing two
+  // sine waves with unrelated frequencies keeps the paths from looking looped.
+  const rnd = (a, b) => a + Math.random() * (b - a);
+  floats.forEach((f, i) => {
+    f._m = {
+      ax: rnd(14, 34), ay: rnd(16, 38),             // drift distance (px)
+      fx: rnd(.05, .12), fy: rnd(.04, .1),          // drift speed (Hz)
+      gx: rnd(.13, .23), gy: rnd(.11, .21),         // second wave for irregularity
+      px: rnd(0, 6.3), py: rnd(0, 6.3), pr: rnd(0, 6.3),
+      rz: rnd(1.5, 4.5), rt: rnd(3, 8),             // rotation and 3D tilt sway (deg)
+      depth: rnd(.4, 1.2),                          // mouse parallax depth
+      hover: 0, shown: 0, delay: 150 + i * 110,
+    };
+    f.addEventListener("pointerenter", () => (f._m.over = true));
+    f.addEventListener("pointerleave", () => (f._m.over = false));
+  });
+
+  let mx = 0, my = 0, smx = 0, smy = 0, sy = scrollY;
+  addEventListener("pointermove", e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, { passive: true });
+
+  const t0 = performance.now();
+  const tick = now => {
+    const t = (now - t0) / 1000;
+    sy += (scrollY - sy) * .12;                      // smoothed scroll
+    smx += (mx - smx) * .05; smy += (my - smy) * .05; // smoothed mouse
+    floats.forEach(f => {
+      const m = f._m, host = f.parentElement;
+      m.shown += ((now - t0 > m.delay ? 1 : 0) - m.shown) * .06;
+      m.hover += ((m.over ? 1 : 0) - m.hover) * .12;
+      const k = Math.PI * 2;
+      const dx = reduced ? 0 : m.ax * (Math.sin(t * m.fx * k + m.px) * .7 + Math.sin(t * m.gx * k + m.py) * .3);
+      const dy = reduced ? 0 : m.ay * (Math.cos(t * m.fy * k + m.py) * .7 + Math.sin(t * m.gy * k + m.px) * .3);
+      const rz = reduced ? 0 : m.rz * Math.sin(t * m.fx * .8 * k + m.pr);
+      const rx = reduced ? 0 : m.rt * Math.sin(t * m.fy * .9 * k + m.px);
+      const ry = reduced ? 0 : m.rt * Math.cos(t * m.gx * .6 * k + m.pr);
+      const par = reduced ? 0 : -(sy - host.offsetTop) * f.dataset.sp * .5;
+      const mxp = smx * 60 * m.depth, myp = smy * 40 * m.depth;
+      const sc = (.88 + .12 * m.shown) * (1 + .07 * m.hover);
+      f.style.opacity = m.shown.toFixed(3);
+      f.style.zIndex = m.over ? 4 : 1;
+      f.style.transform = `translate3d(${(dx + mxp).toFixed(2)}px, ${(dy + myp + par + (1 - m.shown) * 30).toFixed(2)}px, 0) ${f.dataset.base} rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) rotateZ(${rz.toFixed(2)}deg) scale(${sc.toFixed(4)})`;
     });
+    requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+
+  const onScroll = () => {
     const r = drift.getBoundingClientRect();
     const prog = Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / (r.height * .7)));
     const n = Math.round(prog * words.length);
