@@ -86,7 +86,7 @@ function home() {
     host.appendChild(f);
     return f;
   });
-  const hero = $(".hero"), drift = $(".drift");
+  const hero = $(".hero"), drift = $(".drift"), header = $(".site-header");
   const floats = [...place(hero, heroFloats), ...place(drift, driftFloats)];
 
   // Words in the drift paragraph light up as you scroll
@@ -142,6 +142,10 @@ function home() {
   requestAnimationFrame(tick);
 
   const onScroll = () => {
+    // Charcoal background as soon as scrolling begins; header follows while over it
+    document.body.classList.toggle("hero-dark", scrollY > 8);
+    const darkEnd = drift.offsetTop + drift.offsetHeight - header.offsetHeight;
+    document.body.classList.toggle("header-dark", scrollY > 8 && scrollY < darkEnd);
     const r = drift.getBoundingClientRect();
     const prog = Math.min(1, Math.max(0, (innerHeight * .6 - r.top) / (r.height * .7)));
     const n = Math.round(prog * words.length);
