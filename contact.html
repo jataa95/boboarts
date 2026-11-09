@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="kiln">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | Boboarts</title>
+<meta name="description" content="Get in touch with Boboarts about commissions, available works and collaborations.">
+<meta property="og:title" content="Contact | Boboarts">
+<meta property="og:description" content="Get in touch with Boboarts about commissions, available works and collaborations.">
+<meta property="og:image" content="assets/works/boy-relief.webp">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23b87a50'/><text x='50' y='68' font-size='54' text-anchor='middle' font-family='Georgia' fill='%23151312'>B</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/main.js"></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="logo" href="index.html">Bobo<span>arts</span></a>
+    <button class="nav-toggle" aria-expanded="false" aria-label="Toggle menu">Menu</button>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="commission.html">Commission</a>
+      <a href="contact.html" aria-current="page">Contact</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="page-intro container">
+    <p class="eyebrow">Contact</p>
+    <h1>Let's <em>talk</em><br>clay.</h1>
+    <p>For commissions, available works, exhibitions or collaborations, send a message and you'll get a reply as soon as possible.</p>
+  </section>
+
+  <section class="container">
+    <div class="contact-grid">
+      <div class="reveal">
+        <ul class="contact-list">
+          <li><span class="eyebrow">Email</span><a href="mailto:hello@boboarts.com">hello@boboarts.com</a></li>
+          <li><span class="eyebrow">WhatsApp</span><a href="https://wa.me/0000000000" target="_blank" rel="noopener">+000 000 0000</a></li>
+          <li><span class="eyebrow">TikTok</span><a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">@henzyyyyyy</a></li>
+          <li><span class="eyebrow">Instagram</span><a href="#" target="_blank" rel="noopener">@boboarts</a></li>
+        </ul>
+      </div>
+      <form id="commission-form" class="reveal" data-email="hello@boboarts.com">
+        <div class="row-2">
+          <label>Name<input name="name" required autocomplete="name"></label>
+          <label>Email<input name="email" type="email" required autocomplete="email"></label>
+        </div>
+        <div class="row-2">
+          <label>Phone / WhatsApp<input name="phone" type="tel" autocomplete="tel"></label>
+          <label>Commission type
+            <select name="type">
+              <option value="relief-portrait">Relief portrait</option>
+              <option value="figurative-panel">Figurative panel</option>
+              <option value="animal">Pet / animal</option>
+              <option value="heritage-mask">Heritage mask</option>
+              <option value="face-study">Face study</option>
+              <option value="custom">Something else</option>
+              <option value="general">General enquiry</option>
+            </select>
+          </label>
+        </div>
+        <label>Size &amp; budget (optional)<input name="budget" placeholder="e.g. 30 × 40 cm, flexible budget"></label>
+        <label>Your idea<textarea name="message" required placeholder="Tell me about the piece, who or what it's of, and when you need it."></textarea></label>
+        <div><button class="btn" type="submit">Send enquiry →</button></div>
+        <p class="form-note">You can also attach reference photos when you reply by email or WhatsApp.</p>
+      </form>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <div class="container">
+    <span>© <span data-year></span> Boboarts. Hand-sculpted in clay.</span>
+    <div class="links">
+      <a href="https://www.tiktok.com/@henzyyyyyy" target="_blank" rel="noopener">TikTok</a>
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
